@@ -15,7 +15,7 @@ export class Newsitem extends Component {
         {description}...
       </p>
       <p className="card-text" style={{ fontSize: "0.9rem", color: "#555" }}>
-        Published: {publishdate.slice(0, 10)}
+        Publish Date: {publishdate.slice(0, 10)}
       </p>
       <div className="mt-auto">
         <a href={newsurl} target="_blank" rel="noreferrer" className="btn btn-primary">
