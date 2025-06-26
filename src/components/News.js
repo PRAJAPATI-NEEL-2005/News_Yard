@@ -3,13 +3,14 @@ import Newsitem from "./Newsitem";
 import Spinner from "./Spinner";
 
 export class News extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       articles: [],
       loading: false,
       page: 1,
     };
+    document.title=`${this.props.category}-News_Yard`
   }
   async componentDidMount() {
     let url =
