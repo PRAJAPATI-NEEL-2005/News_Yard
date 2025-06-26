@@ -49,7 +49,7 @@ let url = `https://newsapi.org/v2/top-headlines?category=${this.props.category}&
   render() {
     return (
       <div className="container">
-        <h1 className="text-center">Top Headlines</h1>
+        <h1 className="text-center">Top Headlines from {this.props.category}</h1>
         {this.state.loading && <Spinner />}
        {!this.state.loading &&<div className="row">
           {this.state.articles.map((element) => {
