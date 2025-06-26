@@ -13,7 +13,7 @@ export class News extends Component {
   }
   async componentDidMount() {
     let url =
-      "https://newsapi.org/v2/top-headlines?category=business&apiKey=4a61f2b757024612b7080e25ab585230&pageSize=8";
+      `https://newsapi.org/v2/top-headlines?category=${this.props.category}&apiKey=4a61f2b757024612b7080e25ab585230&pageSize=8&page=${this.state.page}`;
     this.setState({ loading: true });
     let data = await fetch(url);
     let parsedData = await data.json();
@@ -25,7 +25,7 @@ export class News extends Component {
     });
   }
   onPrev = async () => {
-    let url = `https://newsapi.org/v2/top-headlines?category=business&apiKey=4a61f2b757024612b7080e25ab585230&page=${this.state.page - 1}&pageSize=8`;
+    let url = `https://newsapi.org/v2/top-headlines?category=${this.props.category}&apiKey=4a61f2b757024612b7080e25ab585230&page=${this.state.page - 1}&pageSize=8`;
     this.setState({ loading: true });
     let data = await fetch(url);
     let parsedData = await data.json();
@@ -36,7 +36,7 @@ export class News extends Component {
     });
   };
   onNext = async () => {
-    let url = `https://newsapi.org/v2/top-headlines?category=business&apiKey=4a61f2b757024612b7080e25ab585230&page=${this.state.page + 1 }&pageSize=8`;
+    let url = `https://newsapi.org/v2/top-headlines?category=${this.props.category}&apiKey=4a61f2b757024612b7080e25ab585230&page=${this.state.page + 1 }&pageSize=8`;
     this.setState({ loading: true });
     let data = await fetch(url);
     let parsedData = await data.json();
