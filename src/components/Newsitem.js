@@ -14,8 +14,8 @@ export class Newsitem extends Component {
       <p className="card-text" style={{ height: "6rem", overflow: "hidden", textOverflow: "ellipsis" }}>
         {description}...
       </p>
-      <p className="card-text" style={{ fontSize: "0.9rem", color: "#555" }}>
-        Publish Date: {publishdate.slice(0, 10)}
+      <p className="card-text" style={{ fontSize: "0.9rem", color: "#555" }}> <small className="text-muted">
+        Publish Date: {publishdate.slice(0, 10)}</small>
       </p>
       <div className="mt-auto">
         <a href={newsurl} target="_blank" rel="noreferrer" className="btn btn-primary">
