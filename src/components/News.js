@@ -13,7 +13,7 @@ export class News extends Component {
   }
   async componentDidMount() {
     let url =
-      "https://newsapi.org/v2/top-headlines?category=business&apiKey=4a61f2b757024612b7080e25ab585230&pageSize=20";
+      "https://newsapi.org/v2/top-headlines?category=business&apiKey=4a61f2b757024612b7080e25ab585230&pageSize=8";
     this.setState({ loading: true });
     let data = await fetch(url);
     let parsedData = await data.json();
@@ -21,11 +21,11 @@ export class News extends Component {
     this.setState({
       articles: parsedData.articles,
       totalarticles: parsedData.totalResults,
-      totalpage: Math.ceil(parsedData.totalResults / 20),
+      totalpage: Math.ceil(parsedData.totalResults / 5),
     });
   }
   onPrev = async () => {
-    let url = `https://newsapi.org/v2/top-headlines?category=business&apiKey=4a61f2b757024612b7080e25ab585230&page=${this.state.page - 1}&pageSize=20`;
+    let url = `https://newsapi.org/v2/top-headlines?category=business&apiKey=4a61f2b757024612b7080e25ab585230&page=${this.state.page - 1}&pageSize=8`;
     this.setState({ loading: true });
     let data = await fetch(url);
     let parsedData = await data.json();
@@ -36,7 +36,7 @@ export class News extends Component {
     });
   };
   onNext = async () => {
-    let url = `https://newsapi.org/v2/top-headlines?category=business&apiKey=4a61f2b757024612b7080e25ab585230&page=${this.state.page + 1 }&pageSize=20`;
+    let url = `https://newsapi.org/v2/top-headlines?category=business&apiKey=4a61f2b757024612b7080e25ab585230&page=${this.state.page + 1 }&pageSize=8`;
     this.setState({ loading: true });
     let data = await fetch(url);
     let parsedData = await data.json();
@@ -57,14 +57,15 @@ export class News extends Component {
             return (
               <div className="col-md-3 my-3" key={element.url}>
                 <Newsitem
-                  title={element.title ? element.title : ""}
-                  description={element.description ? element.description : ""}
+                  title={element.title ? element.title.slice(0,50) : ""}
+                  description={element.description ? element.description.slice(0,90) : ""}
                   imageurl={
                     element.urlToImage
                       ? element.urlToImage
                       : "https://a4.espncdn.com/combiner/i?img=%2Fi%2Fcricket%2Fcricinfo%2F1099495_800x450.jpg"
                   }
                   newsurl={element.url}
+                  publishdate={element.publishedAt.slice(0, 10)}
                 />
               </div>
             );
