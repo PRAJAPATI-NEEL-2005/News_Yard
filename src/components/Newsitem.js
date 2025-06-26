@@ -7,7 +7,7 @@ export class Newsitem extends Component {
    <div>
     
   <div className="card" style={{ width: "18rem", height: "28rem", overflow: "" }}>
- <span className="position-absolute top-0 start-50 translate-middle badge rounded-pill bg-primary"
+ <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary"
       style={{zIndex : '1'}}>
      {source}
   
