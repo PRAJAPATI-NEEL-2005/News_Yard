@@ -2,10 +2,17 @@ import React, { Component } from "react";
 
 export class Newsitem extends Component {
   render() {
-    let { title, description,imageurl,newsurl ,publishdate} = this.props;
+    let { title, description,imageurl,newsurl ,publishdate ,source} = this.props;
     return (
    <div>
-  <div className="card" style={{ width: "18rem", height: "28rem", overflow: "hidden" }}>
+    
+  <div className="card" style={{ width: "18rem", height: "28rem", overflow: "" }}>
+ <span className="position-absolute top-0 start-50 translate-middle badge rounded-pill bg-primary"
+      style={{zIndex : '1'}}>
+     {source}
+  
+</span>
+
     <img src={imageurl} className="card-img-top" alt="..." style={{ height: "10rem", objectFit: "cover" }} />
     <div className="card-body d-flex flex-column">
       <h5 className="card-title" style={{ height: "3rem", overflow: "hidden", textOverflow: "ellipsis" }}>

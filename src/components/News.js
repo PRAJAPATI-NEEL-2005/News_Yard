@@ -66,6 +66,7 @@ export class News extends Component {
                   }
                   newsurl={element.url}
                   publishdate={element.publishedAt.slice(0, 10)}
+                  source={element.source.name}
                 />
               </div>
             );
