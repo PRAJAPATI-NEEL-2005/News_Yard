@@ -14,19 +14,27 @@ export class News extends Component {
     document.title=`${this.props.category}-News_Yard`
   }
   async componentDidMount() {
+    this.props.setprogress(20);
     let url =
       `https://newsapi.org/v2/top-headlines?category=${this.props.category}&apiKey=4a61f2b757024612b7080e25ab585230&pageSize=${this.props.pagesize}&page=${this.state.page}`;
     this.setState({ loading: true });
     let data = await fetch(url);
+        this.props.setprogress(40);
+
     let parsedData = await data.json();
-    
+        this.props.setprogress(60);
+
     this.setState({ loading: false });
+        this.props.setprogress(80);
+
     this.setState({
       articles: parsedData.articles,
       totalarticles: parsedData.totalResults,
       totalpage: Math.ceil(parsedData.totalResults / this.props.pagesize),
     });
     console.log(this.state.totalarticles)
+        this.props.setprogress(100);
+
   }
  
   fetchNextArticles =async()=>{
