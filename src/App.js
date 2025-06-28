@@ -9,6 +9,7 @@ import {
   Route,
  
 } from "react-router-dom";
+import Footer from './components/Footer';
 export default class App extends Component {
   pagesize=8;
   apiKey=process.env.REACT_APP_NEWS_API;
@@ -42,7 +43,7 @@ export default class App extends Component {
   <Route exact path="/sports" element={<News setprogress={this.setprogress}  apiKey={this.apiKey} key="sports" category="sports" pagesize={this.pagesize} />} />
   <Route exact path="/technology" element={<News setprogress={this.setprogress}  apiKey={this.apiKey} key="technology" category="technology" pagesize={this.pagesize} />} />
 </Routes>
-
+<Footer/>
         
 </Router>
       </div>

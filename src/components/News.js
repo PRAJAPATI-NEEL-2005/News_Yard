@@ -57,7 +57,7 @@ let url = `https://newsapi.org/v2/top-headlines?category=${this.props.category}&
 
   render() {
     return (
-      <div className="container mt-5" >
+      <div className="container mt-5 " style={{marginBottom:'100px'}} >
         <h1 className="text-center  "  style={{marginTop:'80px'}}>Top Headlines from {this.props.category}</h1>
      
   <InfinitScroll
