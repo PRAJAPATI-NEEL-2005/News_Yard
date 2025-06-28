@@ -12,6 +12,7 @@ export class Newsitem extends Component {
         >
           <div
             style={{
+
               display: "flex",
               justifyContent: "flex-end",
               position: "absolute",
@@ -19,7 +20,7 @@ export class Newsitem extends Component {
             }}
           >
           
-            <span className=" rounded-pill bg-primary" style={{ zIndex: "1" }}>
+            <span className=" rounded-pill bg-danger text-white" style={{ zIndex: "1" }}>
               {source}
             </span>
           </div>
