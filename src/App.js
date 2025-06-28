@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import Navbar from './components/Navbar';
 import News from './components/News';
 import LoadingBar from "react-top-loading-bar";
+
 import {
   BrowserRouter as Router,
   Routes,
@@ -26,6 +27,7 @@ export default class App extends Component {
   render() {
     return (
       <div>
+      
         <Router>
             <LoadingBar
         color="#f11946"
