@@ -57,8 +57,8 @@ let url = `https://newsapi.org/v2/top-headlines?category=${this.props.category}&
 
   render() {
     return (
-      <div className="container">
-        <h1 className="text-center">Top Headlines from {this.props.category}</h1>
+      <div className="container mt-5" >
+        <h1 className="text-center  "  style={{marginTop:'80px'}}>Top Headlines from {this.props.category}</h1>
      
   <InfinitScroll
         dataLength = {this.state.articles.length}
@@ -66,7 +66,7 @@ let url = `https://newsapi.org/v2/top-headlines?category=${this.props.category}&
         hasMore = {this.state.articles.length!==this.state.totalarticles}
         loader={this.state.loading &&<Spinner />}
       >
-        <div className="container">
+        <div className="container" >
        <div className="row">
           {this.state.articles.map((element) => {
             return (
