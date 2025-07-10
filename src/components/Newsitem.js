@@ -1,81 +1,73 @@
-import React, { Component } from "react";
+import React from "react";
+import "./Newsitem.css";
 
-export class Newsitem extends Component {
-  render() {
-    let { title, description, imageurl, newsurl, publishdate, source } =
-      this.props;
-    return (
-      <div>
-        <div
-          className="card"
-          style={{ width: "18rem", height: "28rem", overflow: "" }}
-        >
-          <div
-            style={{
+const Newsitem = ({ title, description, imageurl, newsurl, publishdate, source, author }) => {
+  // Format the date nicely
+  const formatDate = (dateString) => {
+    if (!dateString) return "Unknown date";
+    const date = new Date(dateString);
+    return date.toLocaleDateString('en-US', { 
+      day: 'numeric', 
+      month: 'short', 
+      year: 'numeric' 
+    });
+  };
 
-              display: "flex",
-              justifyContent: "flex-end",
-              position: "absolute",
-              right: "0",
-            }}
-          >
-          
-            <span className=" rounded-pill bg-danger text-white" style={{ zIndex: "1" }}>
-              {source}
-            </span>
-          </div>
-
+  // Handle missing image
+  const defaultImage = "https://via.placeholder.com/640x360?text=No+Image+Available";
+  
+  return (
+    <div className="news-item">
+      <div className="card news-card">
+        <div className="source-badge">
+          <span>{source || "Unknown"}</span>
+        </div>
+        
+        <div className="image-container">
           <img
-            src={imageurl}
+            src={imageurl || defaultImage}
             className="card-img-top"
-            alt="..."
-            style={{ height: "10rem", objectFit: "cover" }}
+            alt={title || "News image"}
+            onError={(e) => {e.target.src = defaultImage}}
           />
-          <div className="card-body d-flex flex-column">
-            <h5
-              className="card-title"
-              style={{
-                height: "3rem",
-                overflow: "hidden",
-                textOverflow: "ellipsis",
-              }}
-            >
-              {title}...
-            </h5>
-            <p
-              className="card-text"
-              style={{
-                height: "6rem",
-                overflow: "hidden",
-                textOverflow: "ellipsis",
-              }}
-            >
-              {description}...
-            </p>
-            <p
-              className="card-text"
-              style={{ fontSize: "0.9rem", color: "#555" }}
-            >
-              {" "}
-              <small className="text-muted">
-                Publish Date: {publishdate.slice(0, 10)}
-              </small>
-            </p>
-            <div className="mt-auto">
-              <a
-                href={newsurl}
-                target="_blank"
-                rel="noreferrer"
-                className="btn btn-primary"
-              >
-                Read More
-              </a>
+          <div className="image-overlay"></div>
+        </div>
+        
+        <div className="card-body">
+          <h5 className="card-title">{title || "No title available"}</h5>
+          
+          <p className="card-text description">
+            {description || "No description available"}
+          </p>
+          
+          <div className="card-footer">
+            <div className="meta-info">
+              <div className="publish-date">
+                <i className="fas fa-calendar-alt"></i>
+                <span>{formatDate(publishdate)}</span>
+              </div>
+              
+              {author && (
+                <div className="author">
+                  <i className="fas fa-user"></i>
+                  <span>{author.length > 20 ? author.substring(0, 20) + '...' : author}</span>
+                </div>
+              )}
             </div>
+            
+            <a
+              href={newsurl}
+              target="_blank"
+              rel="noreferrer"
+              className="btn read-more-btn"
+            >
+              Read More <i className="fas fa-arrow-right"></i>
+            </a>
           </div>
         </div>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 export default Newsitem;
